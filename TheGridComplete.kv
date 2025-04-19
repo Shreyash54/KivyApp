@@ -1,0 +1,60 @@
+Widgetexample:
+<Widgetexample>:
+    cols:3
+    ToggleButton:
+        text: root.toggle_text
+        font_size:50
+        font_name: "font\LCD.ttf"
+        on_press:root.on_toggle_press(self)
+        size_hint: 0.5, 0.5  
+
+    Button:
+        text:root.text
+        font_name:"font\LCD.ttf"
+        font_size:50
+        on_press:root.on_click()
+        disabled:not root.toggle_text
+        size_hint: 0.5, 0.5  
+        
+    Label: 
+        text:root.my_text 
+        font_size: 50
+        font_name: "font\LCD.ttf"
+        color:[0,0,1,1]
+        size_hint: 0.5, 0.5  
+    Switch:
+        id: switch
+        on_active:root.on_active_switch(self)
+        size_hint: 1,1
+        width: "100dp"
+    
+    Slider:
+        id:slider 
+        min:0
+        max:100
+        value: 50
+        on_value:root.on_slider(self)
+        orientation:"vertical"
+        disabled: not switch.active
+        height:"100dp"
+
+
+    BoxLayout:
+        orientation:"vertical"
+        Label:
+            text: root.slider_text
+            font_name:"font\LCD.ttf"
+            font_size:25
+            color:[0,0,1,1]
+        ProgressBar:
+            max:100
+            value:slider.value
+            size_hint:.5,.5
+        TextInput:
+            id:texinput
+            size_hint:.5,.5
+            width:"100dp"
+        Label:
+            text: texinput.text
+
+
